@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+        <title>TODO supply a title</title>      
+
+    </h:head>  
+    <h:body>
+        <p:layout fullPage="true" style="background: #036fab">
+
+            <p:layoutUnit position="north" size="300">
+                <center>
+                    <img src="resources/president.png" style="width:250px;height:250px;" align="middle"/>
+                </center>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200">
+                <h:panelGrid id="btnPanel" columns="1" >
+                          <h:button value="Home" outcome="adminHome" />
+              
+
+                </h:panelGrid>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50">
+                <center>
+                    <h:outputText value="Powered by GROUP: JAVA420" />
+                </center>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+
+                <p:panel header="Validate">
+                    <p:messages autoUpdate="true"/>
+                    <h:form>
+                    
+
+
+
+                           
+                            <p:outputLabel for="roomtype" value="Select Price: " />
+                            <p:selectOneMenu id="roomtype" value="#{adminController.amountSelect}" style="width:150px">
+                                <f:selectItem itemLabel="Select Price" itemValue="0" noSelectionOption="true" />
+                                <f:selectItem itemLabel="$100 to $200" itemValue="1" noSelectionOption="true" />
+                                <f:selectItem itemLabel="$200 to $300" itemValue="2" noSelectionOption="true" />
+                              
+
+
+
+                            </p:selectOneMenu>
+
+
+
+                            <p:outputLabel/>
+                            <p:commandButton  value="Show" icon="ui-icon-check" actionListener="#{adminController.bookingByPrice()}" update="dataTableUpdate"  style="margin-right:10px"/>
+
+<br/>
+                          
+              <p:outputLabel  value="Date From:" />
+                              <p:calendar id="restricted" value="#{adminController.dateFrom}" mindate="4/1/17"  />
+             
+            
+            
+             
+              <p:outputLabel  value="Date To:" />
+        <p:calendar id="restricte2d" value="#{adminController.dateTo}" mindate="4/1/17"  />
+             
+            
+             
+
+
+
+                            <p:outputLabel/>
+                            <p:commandButton  value="Check Rooms" icon="ui-icon-check" actionListener="#{adminController.bookingByDate()}"  update="dataTableUpdate" style="margin-right:10px"/>
+
+
+
+
+
+
+
+                            <p:dataTable id="dataTableUpdate" var="b" value="#{adminController.b}">
+
+                                <p:column>
+                                    <f:facet name="header">Room Number</f:facet>
+                                    <h:outputText value="#{b.roomNo.roomNo}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">Boooking Amount</f:facet>
+                                    <h:outputText value="#{b.bookingAmount}"/>
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">Date From</f:facet>
+                                    <h:outputText value="#{b.dateFrom}" />
+                                </p:column>
+
+
+
+
+
+
+                                <p:column>
+                                    <f:facet name="header">Service requested</f:facet>
+                                    <h:outputText value="#{b.service}" />
+
+                                </p:column>
+
+
+                            </p:dataTable>
+                           
+                    
+                    </h:form>
+                </p:panel>
+
+
+
+
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+</html>
+

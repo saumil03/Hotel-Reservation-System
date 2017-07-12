@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+        <title>TODO supply a title</title>      
+
+    </h:head>  
+    <h:body>   
+         <h:form>
+    <p:panel header="Validate">
+<p:outputLabel  value="Date From:" />
+        <p:calendar id="restricted" value="#{customerController.book.dateFrom}" mindate="4/1/14" maxdate="7/1/14" />
+             
+            
+             <h:outputText value="#{customerController.book.dateFrom}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+             
+              <p:outputLabel  value="Date To:" />
+        <p:calendar id="restricte2d" value="#{customerController.book.dateTo}" mindate="4/1/14" maxdate="7/1/14" />
+             
+            
+             <h:outputText value="#{customerController.book.dateTo}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+             
+             <p:outputLabel for="roomtype" value="Room Type: " />
+             <p:selectOneMenu id="roomtype" value="#{customerController.AllRoomType()}" var="r" style="width:150px">
+                
+                <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+       
+                <f:selectItems value="#{r}" />
+                 
+                 
+                 
+            </p:selectOneMenu>
+             <p:outputLabel/>  
+    
+                   <p:commandButton value="Search" icon="ui-icon-check" action="#{customerController.booksRoom()}" style="margin-right:10px"/>
+        
+    </p:panel>
+             <p:panel>
+                   <p:dataTable var="b" value="#{customerController.findAll()}" >
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{b.bookingAmount}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Idd</f:facet>
+                    <h:outputText value="#{b.bookingId}" />
+                </p:column>
+
+
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{b.dateFrom}" />
+                </p:column>
+
+
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{b.roomNo}" />
+                </p:column>
+
+
+
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{b.service}" />
+                     <td><h:outputLink value="register.xhtml">Home</h:outputLink></td>
+                    
+                </p:column>
+
+
+            </p:dataTable>
+             </p:panel>
+         </h:form>
+    </h:body>
+</html>

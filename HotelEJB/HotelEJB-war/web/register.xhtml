@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+        <title> supply a title</title>      
+
+    </h:head>  
+    <h:body>  
+        <h:form>
+            <p:panel header="Validate">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="2" cellpadding="3">
+
+
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+                    <p:inputText id="name" value="#{customerController.cus.custName}"  label="Name"/>
+
+
+                    <h:outputLabel for="name" value="Address:" style="font-weight:bold"/>                    
+                    <p:inputText id="address" value="#{customerController.cus.custAddress}"  label="Name"/>
+
+
+
+                    <h:outputLabel for="name" value="Emial id:" style="font-weight:bold"/>                    
+                    <p:inputText id="email" value="#{customerController.cus.custEmail}"  label="Name"/>
+
+
+
+                    <h:outputLabel for="name" value="Password:" style="font-weight:bold"/>                    
+                    <p:password id="password" value="#{customerController.cus.custPassword}" label="Name"/>
+
+
+                    <h:outputLabel for="name" value="Confirm Pasword:" style="font-weight:bold"/>                    
+                    <p:password id="conpass"   label="Name"/>
+
+
+
+
+                </h:panelGrid>
+             
+                <p:commandButton value="Register" icon="ui-icon-check" action="#{customerController.registerUser()}" style="margin-right:10px"/>
+      <h:button value="Home" outcome="home" />
+              
+            </p:panel>
+        </h:form>
+
+
+    </h:body>
+</html>

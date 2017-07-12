@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+        <title>TODO supply a title</title>      
+          
+    </h:head>  
+    <h:body>
+        <p:layout fullPage="true" style="background: #036fab">
+ 
+            <p:layoutUnit position="north" size="300">
+                <center>
+                <img src="resources/president.png" style="width:250px;height:250px;" align="middle"/>
+                </center>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200">
+                
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50">
+                <center>
+                <h:outputText value="Powered by GROUP: JAVA420" />
+                </center>
+            </p:layoutUnit>
+ 
+            <p:layoutUnit position="center">
+               
+        <h:form>
+            <p:panel header="Validate">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="3" cellpadding="3">
+
+
+
+                    <p:outputLabel  value="Date From:" />
+                    <p:calendar id="restricted" value="#{customerController.book.dateFrom}" mindate="4/1/17" />
+
+
+                    <h:outputText value="#{customerController.book.dateFrom}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+
+                    <p:outputLabel  value="Date To:" />
+                    <p:calendar id="restricte2d" value="#{customerController.book.dateTo}" mindate="4/1/17"  />
+
+
+                    <h:outputText value="#{customerController.book.dateTo}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+
+                    <p:outputLabel for="roomtype" value="Room Type: " />
+                    <p:selectOneMenu id="roomtype" value="#{customerController.roomtype.roomtypeId}" style="width:150px">
+                        <p:ajax listener="#{customerController.onRoomTypeChange}" update="room" />
+                        <f:selectItem itemLabel="Select Room Type" itemValue="" noSelectionOption="true" />
+
+                        <f:selectItems value="#{customerController.allRoomTypeList()}" var="r" itemLabel="#{r.roomType}" itemValue="#{r.roomtypeId}" />
+
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel/>
+                    <p:outputLabel for="room" value="Room No: " />
+                    <p:selectOneMenu id="room" value="#{customerController.rooms.roomId}" style="width:150px">
+
+
+                        <f:selectItem itemLabel="Select Room" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{customerController.roomListByRoomType()}" var="ro" itemLabel="#{ro.roomNo}" itemValue="#{ro.roomId}" />
+                    </p:selectOneMenu>
+                    <p:outputLabel/>
+
+
+
+
+
+
+                    <h:outputLabel for="desc" value="Special service" style="font-weight:bold"/>
+                    <p:inputTextarea id="desc" value="#{customerController.book.service}" required="true" label="Description">
+                    </p:inputTextarea>
+
+
+
+                </h:panelGrid>
+
+                <p:commandButton value="Book Room" icon="ui-icon-check" action="#{customerController.updateBook()}" style="margin-right:10px"/>
+      <h:button value="Home" outcome="adminHome" />
+              
+            </p:panel>
+        </h:form>
+
+            </p:layoutUnit>
+ 
+        </p:layout>
+    </h:body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>   
+        <title>TODO supply a title</title>      
+          
+    </h:head>  
+    <h:body>
+        <p:layout fullPage="true" style="background: #036fab">
+ 
+            <p:layoutUnit position="north" size="300">
+                <center>
+                <img src="resources/president.png" style="width:250px;height:250px;" align="middle"/>
+                </center>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200">
+                
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="50">
+                <center>
+                <h:outputText value="Powered by GROUP: JAVA420" />
+                </center>
+            </p:layoutUnit>
+ 
+            <p:layoutUnit position="center">
+                <h:form>
+            <p:panel header="Validate">
+                <p:messages autoUpdate="true"/>
+
+                <h:panelGrid id="grid" columns="2" cellpadding="3">
+                    
+                    
+                      
+                   
+<p:outputLabel value="Room: " />
+                    <p:selectOneMenu id="room" value="#{adminController.room.roomId}" style="width:150px">
+                        <f:selectItem itemLabel="Select Room" itemValue="" noSelectionOption="true" />
+
+                        <f:selectItems value="#{adminController.allRoomList()}" var="r" itemLabel="#{r.roomNo}" itemValue="#{r.roomId}" />
+
+
+                    </p:selectOneMenu>
+
+
+
+ 
+                    <p:outputLabel  value="Room Type: " />
+                    <p:selectOneMenu id="roomtype" value="#{adminController.roomtype.roomtypeId}" style="width:150px">
+                        <f:selectItem itemLabel="Room Type" itemValue="" noSelectionOption="true" />
+
+                        <f:selectItems value="#{customerController.allRoomTypeList()}" var="r" itemLabel="#{r.roomType}" itemValue="#{r.roomtypeId}" />
+
+
+                    </p:selectOneMenu>
+
+
+                    <h:outputLabel for="details" value="Room Details:" style="font-weight:bold"/>                    
+                    <p:inputText id="detail" value="#{adminController.room.roomDetail}"  label="Name"/>
+
+
+
+
+                    <h:outputLabel for="name" value="Floor No:" style="font-weight:bold"/>                    
+                    <p:inputText id="floor" value="#{adminController.room.floorNo}"  label="Name"/>
+
+
+
+                    
+                   
+
+                   
+
+
+
+                </h:panelGrid>
+
+                <p:commandButton value="Add Room" icon="ui-icon-check" action="#{adminController.updateRoom()}" style="margin-right:10px"/>
+      <h:button value="Home" outcome="adminHome" />
+              
+            </p:panel>
+        </h:form>
+            </p:layoutUnit>
+ 
+        </p:layout>
+    </h:body>
+</html>
+
